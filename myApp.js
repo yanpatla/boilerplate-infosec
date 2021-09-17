@@ -13,7 +13,13 @@ app.use(helmet.ieNoOpen())//? PARA  INTERT EXPLORER(NO SE USA CASI)
 app.use(helmet.hsts({maxAge:ninetyDaysInSeconds}))
 app.use(helmet.dnsPrefetchControl())
 app.use(helmet.noCache())
-
+app.use(helmet.contentSecurityPolicy({
+  useDefaults: true,
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc:["'self'", "https://cyberappstest.herokuapp.com/"]
+  }
+}))
 module.exports = app;
 const api = require("./server.js");
 app.use(express.static("public"));
