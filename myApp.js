@@ -13,7 +13,7 @@ app.use(express.static("public"));
 app.disable("strict-transport-security");
 app.use("/_api", api);
 app.get("/", function (request, response) {
-  app.unsubscribe(helmet.xssFilter()) 
+  app.use(helmet.xssFilter()) 
   response.sendFile(__dirname + "/views/index.html");
 });
 let port = process.env.PORT || 3000;
