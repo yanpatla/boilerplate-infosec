@@ -17,7 +17,7 @@ app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc:["'self'", "https://cyberappstest.herokuapp.com/"]
+    scriptSrc:["'self'",  'trusted-cdn.com' ]
   }
 }))
 module.exports = app;
