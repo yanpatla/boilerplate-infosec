@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const helmet = require("helmet");
+let ninetyDaysInSeconds = 90*24*60*60;
 
 app.use(helmet());
 app.use(helmet.hidePoweredBy());//? PARA OCULTAR A LOS HACKERS QUE EL SERVIDOR FUNCIONA CON EXPRESS
@@ -9,6 +10,7 @@ app.use(helmet.frameguard({action:'deny'}))//? PARA QUE NO PUEDAN INTRODUCIR IFR
 app.use(helmet.xssFilter()) //? PARA SANITIZAR LAS REQUEST ADEMAS DE PASSWORD Y COOKIES
 app.use(helmet.noSniff())//? PARA QUE EL NAVEGADOR NO OMITA EL CONTETN TYPE
 app.use(helmet.ieNoOpen())//? PARA  INTERT EXPLORER(NO SE USA CASI)
+app.use(helmet.hsts({maxAge:ninetyDaysInSeconds}))
 
 module.exports = app;
 const api = require("./server.js");
