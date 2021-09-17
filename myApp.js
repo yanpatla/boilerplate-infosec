@@ -7,6 +7,7 @@ app.use(helmet.hidePoweredBy());//? PARA OCULTAR A LOS HACKERS QUE EL SERVIDOR F
 
 app.use(helmet.frameguard({action:'deny'}))//? PARA QUE NO PUEDAN INTRODUCIR IFRAMES MALICIOSOS Y QUE CUAND HAGAS CLICK NO TE REDIRIGA A OTRO LADO
 app.use(helmet.xssFilter()) //? PARA SANITIZAR LAS REQUEST ADEMAS DE PASSWORD Y COOKIES
+app.use(helmet.noSniff())//? PARA QUE EL NAVEGADOR NO OMITA EL CONTETN TYPE
 
 module.exports = app;
 const api = require("./server.js");
