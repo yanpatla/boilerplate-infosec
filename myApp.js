@@ -3,7 +3,9 @@ const app = express();
 const helmet = require("helmet");
 
 app.use(helmet());
-app.use(helmet.hidePoweredBy());
+app.use(helmet.hidePoweredBy());//? PARA OCULTAR A LOS HACKERS QUE EL SERVIDOR FUNCIONA CON EXPRESS
+
+app.use(helmet.frameguard({action:'deny'}))
 
 module.exports = app;
 const api = require("./server.js");
