@@ -11,6 +11,7 @@ app.use(helmet.xssFilter()) //? PARA SANITIZAR LAS REQUEST ADEMAS DE PASSWORD Y 
 app.use(helmet.noSniff())//? PARA QUE EL NAVEGADOR NO OMITA EL CONTETN TYPE
 app.use(helmet.ieNoOpen())//? PARA  INTERT EXPLORER(NO SE USA CASI)
 app.use(helmet.hsts({maxAge:ninetyDaysInSeconds}))
+app.use(helmet.dnsPrefetchControl())
 
 module.exports = app;
 const api = require("./server.js");
